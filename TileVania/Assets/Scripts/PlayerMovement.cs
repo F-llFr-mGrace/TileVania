@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     Vector2 v2moveInupt;
     Rigidbody2D rbMyRigidBody;
     Animator amMyAnimator;
+    CapsuleCollider2D CCMyCapsuleCollider;
 
     private void Start()
     {
         rbMyRigidBody = GetComponent<Rigidbody2D>();
         amMyAnimator = GetComponent<Animator>();
+        CCMyCapsuleCollider = GetComponent<CapsuleCollider2D>();
     }
     private void Update()
     {
@@ -50,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
+        if (!CCMyCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            return;
+        }
         if (value.isPressed)
         {
             //do stuff
