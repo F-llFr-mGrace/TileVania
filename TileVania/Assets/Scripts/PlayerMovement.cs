@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float fltrunSpeed = 10f;
+    [SerializeField] float fltJumpSpeed = 10f;
     Vector2 v2moveInupt;
     Rigidbody2D rbMyRigidBody;
     Animator amMyAnimator;
@@ -41,9 +42,18 @@ public class PlayerMovement : MonoBehaviour
         amMyAnimator.SetBool("isRunning", boolPlayerHasHorizontalSpeed);
     }
 
-    void OnMove (InputValue value)
+    private void OnMove (InputValue value)
     {
         v2moveInupt = value.Get<Vector2>();
         Debug.Log(v2moveInupt);
+    }
+
+    private void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            //do stuff
+            rbMyRigidBody.velocity += new Vector2(0f, fltJumpSpeed);
+        }
     }
 }
