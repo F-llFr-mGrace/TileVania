@@ -13,12 +13,14 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rbMyRigidBody;
     Animator amMyAnimator;
     CapsuleCollider2D CCMyCapsuleCollider;
+    float fltgravityScaleAtStart;
 
     private void Start()
     {
         rbMyRigidBody = GetComponent<Rigidbody2D>();
         amMyAnimator = GetComponent<Animator>();
         CCMyCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        fltgravityScaleAtStart = rbMyRigidBody.gravityScale;
     }
     private void Update()
     {
@@ -31,11 +33,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!CCMyCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
+            rbMyRigidBody.gravityScale = fltgravityScaleAtStart;
+            amMyAnimator.SetBool("isClimbing", false);
             return;
         }
         
         Vector2 v2ClimbVelocity = new Vector2(rbMyRigidBody.velocity.x, v2moveInupt.y * fltclimbSpeed);
         rbMyRigidBody.velocity = v2ClimbVelocity;
+        rbMyRigidBody.gravityScale = 0f;
+
+        bool boolPlayerHasVerticalSpeed = Mathf.Abs(rbMyRigidBody.velocity.y) > Mathf.Epsilon;
+        amMyAnimator.SetBool("isClimbing", boolPlayerHasVerticalSpeed);
     }
 
     private void FlipSprite()
