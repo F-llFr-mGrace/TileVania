@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] GameObject self;
     [SerializeField] float fltrunSpeed = 10f;
     [SerializeField] float fltJumpSpeed = 10f;
     [SerializeField] float fltclimbSpeed = 5f;
@@ -39,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
         if (ccMyBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
             isAlive = false;
+            amMyAnimator.SetTrigger("Dying");
+            self.layer = 12;
+            rbMyRigidBody.velocity = new Vector2(0,10);
         }
     }
 
