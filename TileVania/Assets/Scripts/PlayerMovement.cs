@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D ccMyBodyCollider;
     BoxCollider2D bcMyFootCollider;
     float fltgravityScaleAtStart;
+    bool isAlive = true;
 
     private void Start()
     {
@@ -26,9 +27,19 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (!isAlive) { return; }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
+    }
+
+    private void Die()
+    {
+        if (ccMyBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            isAlive = false;
+        }
     }
 
     private void ClimbLadder()
@@ -69,12 +80,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove (InputValue value)
     {
+        if (!isAlive) { return; }
         v2moveInupt = value.Get<Vector2>();
         Debug.Log(v2moveInupt);
     }
 
     private void OnJump(InputValue value)
     {
+        if (!isAlive) { return; }
         if (!bcMyFootCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
