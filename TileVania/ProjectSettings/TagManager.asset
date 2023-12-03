@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Death
   - Spikes
   - Bullet
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Climbing
     uniqueID: 541911159
+    locked: 0
+  - name: Interactable
+    uniqueID: 4117651253
     locked: 0
   - name: Enemy
     uniqueID: 1967168995
