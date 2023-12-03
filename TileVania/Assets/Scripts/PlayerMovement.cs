@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
             amMyAnimator.SetTrigger("Dying");
             GoSelf.layer = 12;
             rbMyRigidBody.velocity = new Vector2(0,10);
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 
