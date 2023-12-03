@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameObject self;
+    [SerializeField] Transform gun;
+    [SerializeField] GameObject bullet;
     [SerializeField] float fltrunSpeed = 10f;
     [SerializeField] float fltJumpSpeed = 10f;
     [SerializeField] float fltclimbSpeed = 5f;
@@ -101,5 +103,11 @@ public class PlayerMovement : MonoBehaviour
             //do stuff
             rbMyRigidBody.velocity += new Vector2(0f, fltJumpSpeed);
         }
+    }
+
+    private void OnFire()
+    {
+        if (!isAlive) { return; }
+        Instantiate(bullet, gun.position, transform.rotation);
     }
 }
