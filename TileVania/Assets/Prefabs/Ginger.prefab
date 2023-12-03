@@ -247,9 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745a700154ef8c14eb7c6687eaae7a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: {fileID: 7321234947380424339}
-  gun: {fileID: 3853017124534364442}
-  bullet: {fileID: 1954846079695410607, guid: dfce8fc100748cb48bb759e44d790f81, type: 3}
+  GoSelf: {fileID: 7321234947380424339}
+  TfGun: {fileID: 3853017124534364442}
+  GoBullet: {fileID: 1954846079695410607, guid: dfce8fc100748cb48bb759e44d790f81, type: 3}
   fltrunSpeed: 6
   fltJumpSpeed: 8
   fltclimbSpeed: 5

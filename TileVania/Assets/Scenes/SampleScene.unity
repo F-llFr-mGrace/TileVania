@@ -1818,11 +1818,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!4 &807377020 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3853017124534364442, guid: 8e114be8dc95bed4db29d811dcfd0de4, type: 3}
-  m_PrefabInstance: {fileID: 6467972008508010246}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &974091317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7824661708069529814, guid: 8e114be8dc95bed4db29d811dcfd0de4, type: 3}
@@ -1844,7 +1839,7 @@ GameObject:
   - component: {fileID: 1358722907}
   m_Layer: 6
   m_Name: Tilemap Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9377,7 +9372,7 @@ GameObject:
   - component: {fileID: 1548464586}
   m_Layer: 11
   m_Name: Goober
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9530,7 +9525,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1548464585
 MonoBehaviour:
@@ -24671,10 +24666,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6152229985218705596, guid: 8e114be8dc95bed4db29d811dcfd0de4, type: 3}
-      propertyPath: gun
-      value: 
-      objectReference: {fileID: 807377020}
     - target: {fileID: 7321234947380424339, guid: 8e114be8dc95bed4db29d811dcfd0de4, type: 3}
       propertyPath: m_Name
       value: Ginger

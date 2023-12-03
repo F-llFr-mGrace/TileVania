@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] GameObject self;
-    [SerializeField] Transform gun;
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject GoSelf;
+    [SerializeField] Transform TfGun;
+    [SerializeField] GameObject GoBullet;
     [SerializeField] float fltrunSpeed = 10f;
     [SerializeField] float fltJumpSpeed = 10f;
     [SerializeField] float fltclimbSpeed = 5f;
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D ccMyBodyCollider;
     BoxCollider2D bcMyFootCollider;
     float fltgravityScaleAtStart;
-    bool isAlive = true;
+    bool boolIsAlive = true;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (!isAlive) { return; }
+        if (!boolIsAlive) { return; }
         Run();
         FlipSprite();
         ClimbLadder();
@@ -41,9 +41,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ccMyBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Spikes")))
         {
-            isAlive = false;
+            boolIsAlive = false;
             amMyAnimator.SetTrigger("Dying");
-            self.layer = 12;
+            GoSelf.layer = 12;
             rbMyRigidBody.velocity = new Vector2(0,10);
         }
     }
@@ -86,14 +86,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove (InputValue value)
     {
-        if (!isAlive) { return; }
+        if (!boolIsAlive) { return; }
         v2moveInupt = value.Get<Vector2>();
-        Debug.Log(v2moveInupt);
     }
 
     private void OnJump(InputValue value)
     {
-        if (!isAlive) { return; }
+        if (!boolIsAlive) { return; }
         if (!bcMyFootCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
@@ -107,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnFire()
     {
-        if (!isAlive) { return; }
-        Instantiate(bullet, gun.position, transform.rotation);
+        if (!boolIsAlive) { return; }
+        Instantiate(GoBullet, TfGun.position, transform.rotation);
     }
 }
